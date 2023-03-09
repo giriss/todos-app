@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :todos
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  scope :users do
+    post '', to: 'users#create'
+    get 'login', to: 'users#login'
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :todos
 end

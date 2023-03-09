@@ -1,4 +1,5 @@
 class TodosController < ApplicationController
+  before_action :authenticate
   before_action :set_todo, only: %i[ show update destroy ]
 
   # GET /todos
@@ -46,6 +47,6 @@ class TodosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def todo_params
-      params.require(:todo).permit(:title, :description, :is_completed)
+      params.permit(:title, :description, :is_completed)
     end
 end
